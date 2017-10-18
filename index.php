@@ -22,11 +22,11 @@ function greedyThief($values, $maxWeightInSack = 10)
 	$permuteResults = pcPermute($values);
 	$sack = [];
 	$countValue = count($values);
-	foreach($permuteResults as $permuteResults)
+	foreach($permuteResults as $permuteResult)
 	{
 		$actualWeightInSack = 0;
 		$itemsInSack = [];
-		foreach($permuteResults as $key => $onePermute)
+		foreach($permuteResult as $key => $onePermute)
 		{
 			if (
 				$actualWeightInSack + $onePermute['weight'] <= $maxWeightInSack
