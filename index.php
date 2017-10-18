@@ -59,7 +59,7 @@ function greedyThief($values, $maxWeightInSack = 10)
 			$maxSack  = $items;
 		}
 	}
-	print $maxPrice . '<br />';
+
 	print_r($maxSack);
 }
 
