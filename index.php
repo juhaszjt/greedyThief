@@ -1,4 +1,6 @@
 <?php
+function greedyThief($values, $maxWeightInSack = 10)
+{
 	function pcPermute($items, $perms = array( ))
 	{
 		if (empty($items))
@@ -17,39 +19,13 @@
 		}
 		return $return;
 	}
-
-	$value = [
-		[
-			'weight' => 2,
-			'price' => 6
-		],
-		[
-			'weight' => 2,
-			'price' => 3
-		],
-		[
-			'weight' => 6,
-			'price' => 5
-		],
-		[
-			'weight' => 5,
-			'price' => 4
-		],
-		[
-			'weight' => 4,
-			'price' => 6
-		],
-	];
-	$permuteResults = pcPermute($value);
-
-	$maxWeightInSack = 10;
+	$permuteResults = pcPermute($values);
 	$sack = [];
-	$countValue = count($value);
+	$countValue = count($values);
 	foreach($permuteResults as $permuteResults)
 	{
 		$actualWeightInSack = 0;
 		$itemsInSack = [];
-
 		foreach($permuteResults as $key => $onePermute)
 		{
 			if (
@@ -57,7 +33,6 @@
 			){
 				$actualWeightInSack += $onePermute['weight'];
 				$itemsInSack[] = $onePermute;
-
 				if (++$key == $countValue)
 				{
 					$sack[] = $itemsInSack;
@@ -69,7 +44,6 @@
 			}
 		}
 	}
-
 	$maxPrice = 0;
 	$maxSack = [];
 	foreach($sack as $items)
@@ -87,4 +61,30 @@
 	}
 	print $maxPrice . '<br />';
 	print_r($maxSack);
+}
+
+$maxWeightInSack = 10;
+$values = [
+	[
+		'weight' => 2,
+		'price' => 6
+	],
+	[
+		'weight' => 2,
+		'price' => 3
+	],
+	[
+		'weight' => 6,
+		'price' => 5
+	],
+	[
+		'weight' => 5,
+		'price' => 4
+	],
+	[
+		'weight' => 4,
+		'price' => 6
+	],
+];
+greedyThief($values, $maxWeightInSack)
 ?>
